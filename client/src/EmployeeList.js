@@ -138,7 +138,7 @@ function EmployeeList() {
                       <Link
                         type="button"
                         class="btn btn-outline-primary m-2"
-                        to="/EmployeeView"
+                        to={`/EmployeeView/${val.EmployeeID}`}
                       >
                         View
                       </Link>

@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/AddEmployee" element={<AddEmployee />} />
         <Route exact path="/EditEmployee/:id" element={<EditEmployee />} />
         <Route exact path="/EmployeeList" element={<EmployeeList />} />
-        <Route exact path="/EmployeeView" element={<EmployeeView />} />
+        <Route exact path="/EmployeeView/:id" element={<EmployeeView />} />
       </Routes>
     </Router>
   );
