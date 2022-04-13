@@ -5,7 +5,7 @@ import Axios from "axios";
 import "./AddEmployee";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 function EmployeeList() {
   const [EmployeeList, setEmployeelist] = useState([]);
   const [search, setSearch] = useState("");
@@ -18,7 +18,7 @@ function EmployeeList() {
     });
   }, []);
 
-  //Search bar
+  //Search bar-------------------------------------------------------------------------------------
 
   useEffect(() => {
     console.log(EmployeeList);
@@ -31,9 +31,25 @@ function EmployeeList() {
     setFilterEmployee(result);
   }, [search]);
 
+  //Delete Employee---------------------------------------------------------------------------------
+
   const deleteEmployee = async (id) => {
-    await axios.delete(`http://localhost:3001/create/${id}`);
-    EmployeeList();
+    if (
+      window.confirm("Are you sure that you wanted to delete that Employee ?")
+    ) {
+      try {
+        const res = await axios.delete(`http://localhost:3001/remove/${id}`);
+        if (res.status == 200) {
+          const result = EmployeeList.filter(
+            (employee) => employee.EmployeeID != id
+          );
+          toast.success("Employee Deleted Successfully");
+          setFilterEmployee(result);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (

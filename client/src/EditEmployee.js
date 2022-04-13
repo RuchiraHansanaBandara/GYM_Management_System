@@ -3,11 +3,13 @@ import "./EmployeeList";
 import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function EditEmployee() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [user, setUser] = useState({
     name: "",
@@ -24,7 +26,7 @@ function EditEmployee() {
   const addEmployee = (e) => {
     e.preventDefault();
     // todo create update employee endpoint
-    Axios.post("http://localhost:3001/create", {
+    Axios.put(`http://localhost:3001/update-employee/${id}`, {
       name: name,
       username: username,
       email: email,
@@ -34,18 +36,28 @@ function EditEmployee() {
       otrate: otrate,
     }).then(() => {
       console.log("success");
-      window.location.href = "/EmployeeList";
+      toast.success("Employee Updated Successfully");
+      navigate("/EmployeeList");
     });
   };
 
   useEffect(() => {
-    loadEmployee();
-  }, []);
+    axios.get(`http://localhost:3001/get/${id}`).then((response) => {
+      console.log(response.data[0]);
+      setUser({
+        name: response.data[0].Name,
+        username: response.data[0].UserName,
+        email: response.data[0].Email,
+        phone: response.data[0].Phone,
+        emprole: response.data[0].EMPRole,
+        basicsal: response.data[0].BasicSal,
+        otrate: response.data[0].OTRate,
+      });
+    });
+  }, [id]);
 
-  const loadEmployee = async (id) => {
-    const result = await axios.get(`http://localhost:3001/create/${id}`);
-    //todo get user by id
-    setUser(result.data);
+  const onChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   return (
@@ -90,10 +102,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Name"
                 name="name"
-                value={name}
-                onChange={(event) => {
-                  setUser(event.target.value);
-                }}
+                value={name || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -102,10 +112,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee User Name"
                 name="username"
-                value={username}
-                onChange={(event) => {
-                    setUser(event.target.value);
-                }}
+                value={username || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -114,10 +122,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Email"
                 name="email"
-                value={email}
-                onChange={(event) => {
-                    setUser(event.target.value);
-                }}
+                value={email || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -126,10 +132,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Telephone Number"
                 name="phone"
-                value={phone}
-                onChange={(event) => {
-                    setUser(event.target.value);
-                }}
+                value={phone || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -138,10 +142,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Role"
                 name="emprole"
-                value={emprole}
-                onChange={(event) => {
-                    setUser(event.target.value);
-                }}
+                value={emprole || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -150,10 +152,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Basic salery"
                 name="basicsal"
-                value={basicsal}
-                onChange={(event) => {
-                    setUser(event.target.value);
-                }}
+                value={basicsal || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -162,10 +162,8 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee OT Rate"
                 name="otrate"
-                value={otrate}
-                onChange={(event) => {
-                    setUser(event.target.value);
-                }}
+                value={otrate || ""}
+                onChange={onChange}
               />
             </div>
             <div class="AddEButton">
