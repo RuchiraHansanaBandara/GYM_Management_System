@@ -13,7 +13,9 @@ const db = mysql.createConnection({
   password: "",
   database: "GYM_Management_System",
 });
-
+// ===================================================================== ============================ Employee management ============================= =====================================================================
+// ===================================================================== ============================ Employee management ============================= =====================================================================
+// ===================================================================== ============================ Employee management ============================= =====================================================================
 //Insert Employeee --------------------------------------------------------------------------
 app.post("/create", (req, res) => {
   const name = req.body.name;
@@ -52,9 +54,9 @@ app.delete("/remove/:id", (req, res) => {
   db.query(sqlRemove, id, (error, result) => {
     if (error) {
       console.log(error);
-      return res.status(400).json({message : "Error while deleting the user"})
+      return res.status(400).json({ message: "Error while deleting the user" });
     }
-    return res.status(200).json({message:"succesfully deleted"});
+    return res.status(200).json({ message: "succesfully deleted" });
   });
 });
 
@@ -74,15 +76,22 @@ app.get("/get/:id", (req, res) => {
 app.put("/update-employee/:id", (req, res) => {
   const { id } = req.params;
   const { name, username, email, phone, emprole, basicsal, otrate } = req.body;
-  const sqlUpdate = "UPDATE employee SET name = ?, username = ?,  email = ?, phone = ?, emprole = ?, basicsal = ?, otrate = ? WHERE EmployeeID = ? ";
-  db.query(sqlUpdate, [name, username, email, phone, emprole, basicsal, otrate, id], (error, result) => {
-    if (error) {
-      console.log(error);
+  const sqlUpdate =
+    "UPDATE employee SET name = ?, username = ?,  email = ?, phone = ?, emprole = ?, basicsal = ?, otrate = ? WHERE EmployeeID = ? ";
+  db.query(
+    sqlUpdate,
+    [name, username, email, phone, emprole, basicsal, otrate, id],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      }
+      res.send(result);
     }
-    res.send(result);
-  });
+  );
 });
-
+// ===================================================================== ============================ Employee management ============================= =====================================================================
+// ===================================================================== ============================ Employee management ============================= =====================================================================
+// ===================================================================== ============================ Employee management ============================= =====================================================================
 app.listen(3001, () => {
   console.log("yey your server is running on port 3001");
 });

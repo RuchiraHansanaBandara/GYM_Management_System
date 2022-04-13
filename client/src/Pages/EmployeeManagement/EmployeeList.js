@@ -1,12 +1,12 @@
-import "./App.css";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Axios from "axios";
-import "./AddEmployee";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+
 function EmployeeList() {
+  console.log("EMP LIST")
   const [EmployeeList, setEmployeelist] = useState([]);
   const [search, setSearch] = useState("");
   const [filterEmployee, setFilterEmployee] = useState([]);
@@ -55,7 +55,7 @@ function EmployeeList() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/Pages/Home">
           MultiFit GYM
         </a>
         <button
@@ -71,10 +71,10 @@ function EmployeeList() {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">
+            <a class="nav-item nav-link active" href="/Pages/Home">
               Home{" "}
             </a>
-            <a class="nav-item nav-link active" href="/EmployeeList">
+            <a class="nav-item nav-link active" href="/Pages/EmployeeManagement/EmployeeList">
               Employee Management
             </a>
             <a class="nav-item nav-link active" href="#">
@@ -138,14 +138,14 @@ function EmployeeList() {
                       <Link
                         type="button"
                         class="btn btn-outline-primary m-2"
-                        to={`/EmployeeView/${val.EmployeeID}`}
+                        to={`/Pages/EmployeeManagement/EmployeeView/${val.EmployeeID}`}
                       >
                         View
                       </Link>
                       <Link
                         type="button"
                         class="btn btn-outline-warning m-2"
-                        to={`/EditEmployee/${val.EmployeeID}`}
+                        to={`/Pages/EmployeeManagement/EditEmployee/${val.EmployeeID}`}
                       >
                         Edit
                       </Link>

@@ -1,59 +1,67 @@
-import "./App.css";
-import "./EmployeeList";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function AddEmployee() {
-  const [name, setName] = useState("");
-  const [username, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [emprole, setEmpRole] = useState("");
-  const [basicsal, setBasicSal] = useState("");
-  const [otrate, setOtRate] = useState("");
-
+function EditEmployee() {
   const navigate = useNavigate();
-  
+  const { id } = useParams();
+  const [user, setUser] = useState({
+    name: "",
+    username: "",
+    email: "",
+    phone: "",
+    emprole: "",
+    basicsal: "",
+    otrate: "",
+  });
+
+  const { name, username, email, phone, emprole, basicsal, otrate } = user;
 
   const addEmployee = (e) => {
     e.preventDefault();
-    if (
-      !name ||
-      !username ||
-      !email ||
-      !phone ||
-      !emprole ||
-      !basicsal ||
-      !otrate
-    ) {
-      toast.error("Please provide valuves into each input fields");
-    } else {
-      Axios.post("http://localhost:3001/create", {
-        name: name,
-        username: username,
-        email: email,
-        phone: phone,
-        emprole: emprole,
-        basicsal: basicsal,
-        otrate: otrate,
-      }).then(() => {
-        console.log("success");
-        toast.success("Employee Added Successfully");
-        navigate("/EmployeeList")
-      });
-      
     
-     
-    }
+    Axios.put(`http://localhost:3001/update-employee/${id}`, {
+      name: name,
+      username: username,
+      email: email,
+      phone: phone,
+      emprole: emprole,
+      basicsal: basicsal,
+      otrate: otrate,
+    }).then(() => {
+      console.log("success");
+      toast.success("Employee Updated Successfully");
+      navigate("/Pages/EmployeeManagement/EmployeeList");
+    });
+  };
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/get/${id}`).then((response) => {
+      console.log(response.data[0]);
+      setUser({
+        name: response.data[0].Name,
+        username: response.data[0].UserName,
+        email: response.data[0].Email,
+        phone: response.data[0].Phone,
+        emprole: response.data[0].EMPRole,
+        basicsal: response.data[0].BasicSal,
+        otrate: response.data[0].OTRate,
+      });
+    });
+  }, [id]);
+
+  const onChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/Pages/Home">
           MultiFit GYM
         </a>
         <button
@@ -69,10 +77,10 @@ function AddEmployee() {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">
+            <a class="nav-item nav-link active" href="/Pages/Home">
               Home{" "}
             </a>
-            <a class="nav-item nav-link active" href="/EmployeeList">
+            <a class="nav-item nav-link active" href="/Pages/EmployeeManagement/EmployeeList">
               Employee Management
             </a>
             <a class="nav-item nav-link active" href="#">
@@ -84,7 +92,7 @@ function AddEmployee() {
 
       <div className="container-fluid">
         <div className="w-75 mx-auto shado p-5">
-          <h2 className="text-center mb-4 m-3">Add Employee</h2>
+          <h2 className="text-center mb-4 m-3">Update Employee</h2>
           <form onSubmit={addEmployee}>
             <div className="form-group m-2">
               <input
@@ -92,10 +100,8 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Name"
                 name="name"
-                value={name}
-                onChange={(event) => {
-                  setName(event.target.value);
-                }}
+                value={name || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -104,10 +110,8 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee User Name"
                 name="username"
-                value={username}
-                onChange={(event) => {
-                  setUserName(event.target.value);
-                }}
+                value={username || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -116,10 +120,8 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Email"
                 name="email"
-                value={email}
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                }}
+                value={email || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -128,10 +130,8 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Telephone Number"
                 name="phone"
-                value={phone}
-                onChange={(event) => {
-                  setPhone(event.target.value);
-                }}
+                value={phone || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -140,10 +140,8 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Role"
                 name="emprole"
-                value={emprole}
-                onChange={(event) => {
-                  setEmpRole(event.target.value);
-                }}
+                value={emprole || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -152,10 +150,8 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Basic salery"
                 name="basicsal"
-                value={basicsal}
-                onChange={(event) => {
-                  setBasicSal(event.target.value);
-                }}
+                value={basicsal || ""}
+                onChange={onChange}
               />
             </div>
             <div className="form-group m-2">
@@ -164,18 +160,16 @@ function AddEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee OT Rate"
                 name="otrate"
-                value={otrate}
-                onChange={(event) => {
-                  setOtRate(event.target.value);
-                }}
+                value={otrate || ""}
+                onChange={onChange}
               />
             </div>
             <div class="AddEButton">
               <button className="btn btn-outline-info m-3">
                 {" "}
-                Add Employee{" "}
+                Update Employee{" "}
               </button>
-              <Link className="btn btn-outline-danger" to="/EmployeeList">
+              <Link className="btn btn-outline-danger" to="/Pages/EmployeeManagement/EmployeeList">
                 Cancle
               </Link>
             </div>
@@ -186,4 +180,4 @@ function AddEmployee() {
   );
 }
 
-export default AddEmployee;
+export default EditEmployee;

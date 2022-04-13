@@ -1,69 +1,57 @@
-import "./App.css";
-import "./EmployeeList";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 
-function EditEmployee() {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const [user, setUser] = useState({
-    name: "",
-    username: "",
-    email: "",
-    phone: "",
-    emprole: "",
-    basicsal: "",
-    otrate: "",
-  });
+function AddEmployee() {
+  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [emprole, setEmpRole] = useState("");
+  const [basicsal, setBasicSal] = useState("");
+  const [otrate, setOtRate] = useState("");
 
-  const { name, username, email, phone, emprole, basicsal, otrate } = user;
+  const navigate = useNavigate();
+  
 
   const addEmployee = (e) => {
     e.preventDefault();
-    // todo create update employee endpoint
-    Axios.put(`http://localhost:3001/update-employee/${id}`, {
-      name: name,
-      username: username,
-      email: email,
-      phone: phone,
-      emprole: emprole,
-      basicsal: basicsal,
-      otrate: otrate,
-    }).then(() => {
-      console.log("success");
-      toast.success("Employee Updated Successfully");
-      navigate("/EmployeeList");
-    });
-  };
-
-  useEffect(() => {
-    axios.get(`http://localhost:3001/get/${id}`).then((response) => {
-      console.log(response.data[0]);
-      setUser({
-        name: response.data[0].Name,
-        username: response.data[0].UserName,
-        email: response.data[0].Email,
-        phone: response.data[0].Phone,
-        emprole: response.data[0].EMPRole,
-        basicsal: response.data[0].BasicSal,
-        otrate: response.data[0].OTRate,
+    if (
+      !name ||
+      !username ||
+      !email ||
+      !phone ||
+      !emprole ||
+      !basicsal ||
+      !otrate
+    ) {
+      toast.error("Please provide valuves into each input fields");
+    } else {
+      Axios.post("http://localhost:3001/create", {
+        name: name,
+        username: username,
+        email: email,
+        phone: phone,
+        emprole: emprole,
+        basicsal: basicsal,
+        otrate: otrate,
+      }).then(() => {
+        console.log("success");
+        toast.success("Employee Added Successfully");
+        navigate("/Pages/EmployeeManagement/EmployeeList")
       });
-    });
-  }, [id]);
-
-  const onChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+      
+    
+     
+    }
   };
 
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/Pages/Home">
           MultiFit GYM
         </a>
         <button
@@ -79,10 +67,10 @@ function EditEmployee() {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">
+            <a class="nav-item nav-link active" href="/Pages/Home">
               Home{" "}
             </a>
-            <a class="nav-item nav-link active" href="/EmployeeList">
+            <a class="nav-item nav-link active" href="/Pages/EmployeeManagement/EmployeeList">
               Employee Management
             </a>
             <a class="nav-item nav-link active" href="#">
@@ -94,7 +82,7 @@ function EditEmployee() {
 
       <div className="container-fluid">
         <div className="w-75 mx-auto shado p-5">
-          <h2 className="text-center mb-4 m-3">Update Employee</h2>
+          <h2 className="text-center mb-4 m-3">Add Employee</h2>
           <form onSubmit={addEmployee}>
             <div className="form-group m-2">
               <input
@@ -102,8 +90,10 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Name"
                 name="name"
-                value={name || ""}
-                onChange={onChange}
+                value={name}
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
               />
             </div>
             <div className="form-group m-2">
@@ -112,8 +102,10 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee User Name"
                 name="username"
-                value={username || ""}
-                onChange={onChange}
+                value={username}
+                onChange={(event) => {
+                  setUserName(event.target.value);
+                }}
               />
             </div>
             <div className="form-group m-2">
@@ -122,8 +114,10 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Email"
                 name="email"
-                value={email || ""}
-                onChange={onChange}
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
               />
             </div>
             <div className="form-group m-2">
@@ -132,8 +126,10 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Telephone Number"
                 name="phone"
-                value={phone || ""}
-                onChange={onChange}
+                value={phone}
+                onChange={(event) => {
+                  setPhone(event.target.value);
+                }}
               />
             </div>
             <div className="form-group m-2">
@@ -142,8 +138,10 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Role"
                 name="emprole"
-                value={emprole || ""}
-                onChange={onChange}
+                value={emprole}
+                onChange={(event) => {
+                  setEmpRole(event.target.value);
+                }}
               />
             </div>
             <div className="form-group m-2">
@@ -152,8 +150,10 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee Basic salery"
                 name="basicsal"
-                value={basicsal || ""}
-                onChange={onChange}
+                value={basicsal}
+                onChange={(event) => {
+                  setBasicSal(event.target.value);
+                }}
               />
             </div>
             <div className="form-group m-2">
@@ -162,16 +162,18 @@ function EditEmployee() {
                 className="form-control form-control-lg"
                 placeholder="Enter Employee OT Rate"
                 name="otrate"
-                value={otrate || ""}
-                onChange={onChange}
+                value={otrate}
+                onChange={(event) => {
+                  setOtRate(event.target.value);
+                }}
               />
             </div>
             <div class="AddEButton">
               <button className="btn btn-outline-info m-3">
                 {" "}
-                Update Employee{" "}
+                Add Employee{" "}
               </button>
-              <Link className="btn btn-outline-danger" to="/EmployeeList">
+              <Link className="btn btn-outline-danger" to="/Pages/EmployeeManagement/EmployeeList">
                 Cancle
               </Link>
             </div>
@@ -182,4 +184,4 @@ function EditEmployee() {
   );
 }
 
-export default EditEmployee;
+export default AddEmployee;

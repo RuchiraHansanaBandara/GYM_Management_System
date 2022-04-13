@@ -69,7 +69,7 @@ const EmployeeView = () => {
           <br />
           <br />
 
-          <Link to="/EmployeeList">
+          <Link to="/Pages/EmployeeManagement/EmployeeList">
             <div className="btn btn-outline-info">Go Back</div>
           </Link>
         </div>
