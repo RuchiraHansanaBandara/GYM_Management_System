@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.topic {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.Action {
+  text-align: center;
+}
+
+
+#form{
+  float: right;
+  margin-top: .6%;
+}
+.forms-control {
+  float: right;
+  padding: .3em;
+  margin-top: .63%;
+  border-radius: 1%;
+  
+}
+.AddEButton{
+  float: right;
+  
+}
+
