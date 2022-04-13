@@ -115,10 +115,10 @@ function EmployeeList() {
                 <th scope="col">Name</th>
                 <th scope="col">User Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Phone</th>
+                <th scope="col">Telephone(+94)</th>
                 <th scope="col">EMP Role</th>
-                <th scope="col">Basic SAL</th>
-                <th scope="col">OT Rate</th>
+                <th scope="col">Basic SAL(LKR)</th>
+                <th scope="col">OTRate(H)</th>
                 <th class="Action">Action</th>
               </tr>
             </thead>

@@ -124,7 +124,7 @@ function AddEmployee() {
               <input
                 type="number"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee Telephone Number"
+                placeholder="Enter Employee Telephone Number (+94)"
                 name="phone"
                 value={phone}
                 onChange={(event) => {
@@ -148,7 +148,7 @@ function AddEmployee() {
               <input
                 type="Number"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee Basic salery"
+                placeholder="Enter Employee Basic salery (LKR)"
                 name="basicsal"
                 value={basicsal}
                 onChange={(event) => {
@@ -160,7 +160,7 @@ function AddEmployee() {
               <input
                 type="number"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee OT Rate"
+                placeholder="Enter Employee OT Rate (H)"
                 name="otrate"
                 value={otrate}
                 onChange={(event) => {

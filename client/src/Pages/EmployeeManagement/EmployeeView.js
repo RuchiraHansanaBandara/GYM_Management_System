@@ -64,7 +64,7 @@ const EmployeeView = () => {
           <br />
           <br />
 
-          <strong>OT Rate  :    </strong>
+          <strong>OT Rate(H)  :    </strong>
           <span>{employee.otrate}</span>
           <br />
           <br />
