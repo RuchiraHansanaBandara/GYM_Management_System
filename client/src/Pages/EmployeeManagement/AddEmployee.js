@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Axios from "axios";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function AddEmployee() {
@@ -14,7 +14,6 @@ function AddEmployee() {
   const [otrate, setOtRate] = useState("");
 
   const navigate = useNavigate();
-  
 
   const addEmployee = (e) => {
     e.preventDefault();
@@ -40,11 +39,8 @@ function AddEmployee() {
       }).then(() => {
         console.log("success");
         toast.success("Employee Added Successfully");
-        navigate("/Pages/EmployeeManagement/EmployeeList")
+        navigate("/Pages/EmployeeManagement/EmployeeList");
       });
-      
-    
-     
     }
   };
 
@@ -68,13 +64,16 @@ function AddEmployee() {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/Pages/Home">
-              Home{" "}
+               Home  {" "}
             </a>
-            <a class="nav-item nav-link active" href="/Pages/EmployeeManagement/EmployeeList">
-              Employee Management
+            <a
+              class="nav-item nav-link active"
+              href="/Pages/EmployeeManagement/EmployeeList"
+            >
+              Employee Management  
             </a>
             <a class="nav-item nav-link active" href="#">
-              Inventory Management
+              Inventory Management  
             </a>
           </div>
         </div>
@@ -173,8 +172,11 @@ function AddEmployee() {
                 {" "}
                 Add Employee{" "}
               </button>
-              <Link className="btn btn-outline-danger" to="/Pages/EmployeeManagement/EmployeeList">
-                Cancle
+              <Link
+                className="btn btn-outline-danger"
+                to="/Pages/EmployeeManagement/EmployeeList"
+              >
+                Cancel
               </Link>
             </div>
           </form>

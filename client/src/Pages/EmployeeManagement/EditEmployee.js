@@ -170,7 +170,7 @@ function EditEmployee() {
                 Update Employee{" "}
               </button>
               <Link className="btn btn-outline-danger" to="/Pages/EmployeeManagement/EmployeeList">
-                Cancle
+                Cancel
               </Link>
             </div>
           </form>

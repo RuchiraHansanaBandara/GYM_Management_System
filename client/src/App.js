@@ -16,6 +16,7 @@ function App() {
       <ToastContainer position="top-center" />
       <Routes>
         
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/Pages/Home" element={<Home />} />
         <Route exact path="/AddEmployee" element={<AddEmployee />} />
         <Route exact path="/Pages/EmployeeManagement/EditEmployee/:id" element={<EditEmployee />} />
