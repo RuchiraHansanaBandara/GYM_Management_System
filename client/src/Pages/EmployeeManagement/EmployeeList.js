@@ -4,12 +4,15 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function EmployeeList() {
   console.log("EMP LIST")
   const [EmployeeList, setEmployeelist] = useState([]);
   const [search, setSearch] = useState("");
   const [filterEmployee, setFilterEmployee] = useState([]);
+  const doc = new jsPDF();
 
   useEffect(() => {
     Axios.get("http://localhost:3001/EmployeeList").then((Response) => {
@@ -17,6 +20,40 @@ function EmployeeList() {
       setFilterEmployee(Response.data);
     });
   }, []);
+
+
+  // Report genaration Part
+
+  const genarateEmployeeReport = () => {
+		doc.text('Employees of Multi fitness GYM', 10, 10);
+		doc.autoTable({ html: '#my-table' });
+		doc.autoTable({ theme: 'grid' });
+		let array = [];
+		EmployeeList.map((f, idx) => {
+			let item = [];
+			item.push(idx + 1);
+			item.push(f.Name);
+			item.push(f.UserName);
+			item.push(f.Email);
+			item.push(f.Phone);
+			item.push(f.EMPRole);
+			item.push(f.BasicSal);
+      item.push(f.OTRate);
+			array.push(item);
+			return item;
+		});
+
+		doc.autoTable({
+			head: [
+				['#', 'Name', 'User Name', 'Email', 'Phone', 'EMP Role', 'BasicSal', 'OTRate']
+			],
+
+			body: array
+		});
+
+		doc.save('EmployeeList.pdf');
+	};
+
 
   //Search bar-------------------------------------------------------------------------------------
 
@@ -162,6 +199,13 @@ function EmployeeList() {
               })}
             </tbody>
           </table>
+          <button
+                        type="button"
+                        class="btn btn-outline-success m-2"
+                        onClick={ genarateEmployeeReport}
+                      >
+                        Genarate Report
+                      </button>  
         </div>
       </div>
     </div>
