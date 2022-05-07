@@ -5,46 +5,46 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function EmployeeList() {
-  console.log("EMP LIST")
-  const [EmployeeList, setEmployeelist] = useState([]);
+function CustomerList() {
+  console.log("CUST LIST")
+  const [CustomerList, setCustomerlist] = useState([]);
   const [search, setSearch] = useState("");
-  const [filterEmployee, setFilterEmployee] = useState([]);
+  const [filterCustomer, setFilterCustomer] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/EmployeeList").then((Response) => {
-      setEmployeelist(Response.data);
-      setFilterEmployee(Response.data);
+    Axios.get("http://localhost:3001/CustomerList").then((Response) => {
+      setCustomerlist(Response.data);
+      setFilterCustomer(Response.data);
     });
   }, []);
 
   //Search bar-------------------------------------------------------------------------------------
 
   useEffect(() => {
-    console.log(EmployeeList);
-    const result = EmployeeList.filter((employee) => {
+    console.log(CustomerList);
+    const result = CustomerList.filter((Customer) => {
       return (
-        employee.Name.toLowerCase().match(search.toLowerCase()) ||
-        employee.Email.toLowerCase().match(search.toLowerCase())
+        Customer.Name.toLowerCase().match(search.toLowerCase()) ||
+        Customer.Email.toLowerCase().match(search.toLowerCase())
       );
     });
-    setFilterEmployee(result);
+    setFilterCustomer(result);
   }, [search]);
 
-  //Delete Employee---------------------------------------------------------------------------------
+  //Delete Customer---------------------------------------------------------------------------------
 
-  const deleteEmployee = async (id) => {
+  const deleteCustomer = async (id) => {
     if (
-      window.confirm("Are you sure that you wanted to delete that Employee ?")
+      window.confirm("Are you sure that you wanted to delete that Customer ?")
     ) {
       try {
-        const res = await axios.delete(`http://localhost:3001/remove/${id}`);
+        const res = await axios.delete(`http://localhost:3001/removecustomer/${id}`);
         if (res.status == 200) {
-          const result = EmployeeList.filter(
-            (employee) => employee.EmployeeID != id
+          const result = CustomerList.filter(
+            (Customer) => Customer.id != id
           );
-          toast.success("Employee Deleted Successfully");
-          setFilterEmployee(result);
+          toast.success("Customer Deleted Successfully");
+          setFilterCustomer(result);
         }
       } catch (error) {
         console.log(error);
@@ -89,15 +89,15 @@ function EmployeeList() {
       <div className="container-fluid">
         <div className="py-4">
           <div className="topic">
-            <h1>Employee List</h1>
+            <h1>Customer List</h1>
           </div>
           <div class="SearchBarDiv">
             <Link
               type="button"
               class="btn btn-outline-info m-2"
-              to="/AddEmployee"
+              to="/AddCustomer"
             >
-              Add Employee
+              Add Customer
             </Link>
 
             <input
@@ -114,48 +114,51 @@ function EmployeeList() {
           <table class="table">
             <thead class="table table-striped table-dark">
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">User id</th>
                 <th scope="col">Name</th>
+                <th scope="col">Gender</th>
                 <th scope="col">User Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Telephone(+94)</th>
-                <th scope="col">EMP Role</th>
-                <th scope="col">Basic SAL(LKR)</th>
-                <th scope="col">OTRate(H)</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact</th>
+                <th scope="col">payment Method</th>
+                <th scope="col">payment Amount(LKR)</th>
                 <th class="Action">Action</th>
               </tr>
             </thead>
             <tbody>
-              {filterEmployee.map((val, index) => {
+              {filterCustomer.map((val, index) => {
                 return (
                   <tr>
+                    
                     <th scope="row">{index + 1}</th>
-                    <td>{val.Name}</td>
-                    <td>{val.UserName}</td>
-                    <td>{val.Email}</td>
-                    <td>{val.Phone}</td>
-                    <td>{val.EMPRole}</td>
-                    <td>{val.BasicSal}</td>
-                    <td>{val.OTRate}</td>
+                    <td>{val.name}</td>
+                    <td>{val.gender}</td>
+                    <td>{val.userName}</td>
+                    <td>{val.email}</td>
+                    <td>{val.address}</td>
+                    <td>{val.contact}</td>
+                    <td>{val.paymentMethod}</td>
+                    <td>{val.paymentAmount}</td>
                     <td>
                       <Link
                         type="button"
                         class="btn btn-outline-primary m-2"
-                        to={`/Pages/EmployeeManagement/EmployeeView/${val.EmployeeID}`}
+                        to={`/Pages/CustomerManagement/CustomerView/${val.id}`}
                       >
                         View
                       </Link>
                       <Link
                         type="button"
                         class="btn btn-outline-warning m-2"
-                        to={`/Pages/EmployeeManagement/EditEmployee/${val.EmployeeID}`}
+                        to={`/Pages/CustomerManagement/EditCustomer/${val.id}`}
                       >
                         Edit
                       </Link>
                       <button
                         type="button"
                         class="btn btn-outline-danger m-2"
-                        onClick={() => deleteEmployee(val.EmployeeID)}
+                        onClick={() => deleteCustomer(val.id)}
                       >
                         Delete
                       </button>
@@ -171,4 +174,4 @@ function EmployeeList() {
   );
 }
 
-export default EmployeeList;
+export default CustomerList;

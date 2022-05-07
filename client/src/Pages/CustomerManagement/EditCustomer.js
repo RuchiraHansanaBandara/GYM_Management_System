@@ -6,50 +6,53 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function EditEmployee() {
+function EditCustomer() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [user, setUser] = useState({
     name: "",
-    username: "",
+    gender: "",
+    userName: "",
     email: "",
-    phone: "",
-    emprole: "",
-    basicsal: "",
-    otrate: "",
+    address: "",
+    contact: "",
+    paymentMethod: "",
+    paymentAmount: "",
   });
 
-  const { name, username, email, phone, emprole, basicsal, otrate } = user;
+  const { name, gender, userName, email, address, contact, paymentMethod, paymentAmount } = user;
 
-  const addEmployee = (e) => {
+  const addCustomer = (e) => {
     e.preventDefault();
     
-    Axios.put(`http://localhost:3001/update-employee/${id}`, {
+    Axios.put(`http://localhost:3001/updatecustomer/${id}`, {
       name: name,
-      username: username,
+      gender: gender,
+      userName: userName,
       email: email,
-      phone: phone,
-      emprole: emprole,
-      basicsal: basicsal,
-      otrate: otrate,
+      address: address,
+      contact: contact,
+      paymentMethod: paymentMethod,
+      paymentAmount: paymentAmount,
     }).then(() => {
       console.log("success");
-      toast.success("Employee Updated Successfully");
-      navigate("/Pages/EmployeeManagement/EmployeeList");
+      toast.success("Customer Updated Successfully");
+      navigate("/Pages/CustomerManagement/CustomerList");
     });
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/get/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/getcustomer/${id}`).then((response) => {
       console.log(response.data[0]);
       setUser({
-        name: response.data[0].Name,
-        username: response.data[0].UserName,
-        email: response.data[0].Email,
-        phone: response.data[0].Phone,
-        emprole: response.data[0].EMPRole,
-        basicsal: response.data[0].BasicSal,
-        otrate: response.data[0].OTRate,
+        name: response.data[0].name,
+        gender: response.data[0].gender,
+        userName: response.data[0].userName,
+        email: response.data[0].email,
+        address: response.data[0].address,
+        contact: response.data[0].contact,
+        paymentMethod: response.data[0].paymentMethod,
+        paymentAmount: response.data[0].paymentAmount,
       });
     });
   }, [id]);
@@ -80,14 +83,11 @@ function EditEmployee() {
             <a class="nav-item nav-link active" href="/Pages/Home">
               Home{" "}
             </a>
-            <a class="nav-item nav-link active" href="/Pages/EmployeeManagement/EmployeeList">
+            <a class="nav-item nav-link active" href="/Pages/CustomerManagement/CustomerList">
               Employee Management
             </a>
             <a class="nav-item nav-link active" href="#">
               Inventory Management
-            </a>
-            <a class="nav-item nav-link active" href="/Pages/CustomerManagement/CustomerList">
-              Employee Management
             </a>
           </div>
         </div>
@@ -95,13 +95,13 @@ function EditEmployee() {
 
       <div className="container-fluid">
         <div className="w-75 mx-auto shado p-5">
-          <h2 className="text-center mb-4 m-3">Update Employee</h2>
-          <form onSubmit={addEmployee}>
+          <h2 className="text-center mb-4 m-3">Update Customer</h2>
+          <form onSubmit={addCustomer}>
             <div className="form-group m-2">
               <input
                 type="text"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee Name"
+                placeholder="Enter Customer Name"
                 name="name"
                 value={name || ""}
                 onChange={onChange}
@@ -111,29 +111,9 @@ function EditEmployee() {
               <input
                 type="text"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee User Name"
-                name="username"
-                value={username || ""}
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group m-2">
-              <input
-                type="email"
-                className="form-control form-control-lg"
-                placeholder="Enter Employee Email"
-                name="email"
-                value={email || ""}
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group m-2">
-              <input
-                type="number"
-                className="form-control form-control-lg"
-                placeholder="Enter Employee Telephone Number"
-                name="phone"
-                value={phone || ""}
+                placeholder="Enter Customer User gender"
+                name="gender"
+                value={gender || ""}
                 onChange={onChange}
               />
             </div>
@@ -141,9 +121,29 @@ function EditEmployee() {
               <input
                 type="text"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee Role"
-                name="emprole"
-                value={emprole || ""}
+                placeholder="Enter Custmer UserName"
+                name="userName"
+                value={email || ""}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group m-2">
+              <input
+                type="email"
+                className="form-control form-control-lg"
+                placeholder="Enter Customer email"
+                name="email"
+                value={userName || ""}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group m-2">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                placeholder="Enter Custmer address"
+                name="address"
+                value={address || ""}
                 onChange={onChange}
               />
             </div>
@@ -151,9 +151,9 @@ function EditEmployee() {
               <input
                 type="Number"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee Basic salery"
-                name="basicsal"
-                value={basicsal || ""}
+                placeholder="Enter Customer contact Number"
+                name="contact"
+                value={contact || ""}
                 onChange={onChange}
               />
             </div>
@@ -161,18 +161,28 @@ function EditEmployee() {
               <input
                 type="number"
                 className="form-control form-control-lg"
-                placeholder="Enter Employee OT Rate"
-                name="otrate"
-                value={otrate || ""}
+                placeholder="Enter Customer Payment Method"
+                name="paymentMethod"
+                value={paymentMethod || ""}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group m-2">
+              <input
+                type="number"
+                className="form-control form-control-lg"
+                placeholder="Enter Customer Payment Amount"
+                name="paymentAmount"
+                value={paymentAmount || ""}
                 onChange={onChange}
               />
             </div>
             <div class="AddEButton">
               <button className="btn btn-outline-info m-3">
                 {" "}
-                Update Employee{" "}
+                Update Customer{" "}
               </button>
-              <Link className="btn btn-outline-danger" to="/Pages/EmployeeManagement/EmployeeList">
+              <Link className="btn btn-outline-danger" to="/Pages/CustomerManagement/CustomerList">
                 Cancel
               </Link>
             </div>
@@ -183,4 +193,4 @@ function EditEmployee() {
   );
 }
 
-export default EditEmployee;
+export default EditCustomer;

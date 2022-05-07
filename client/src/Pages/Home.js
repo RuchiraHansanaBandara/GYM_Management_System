@@ -32,6 +32,9 @@ function Home() {
             <a class="nav-item nav-link active" href="#">
               Inventory Management
             </a>
+            <a class="nav-item nav-link active" href="/Pages/CustomerManagement/CustomerList">
+              Customer Management
+            </a>
           </div>
         </div>
       </nav>
