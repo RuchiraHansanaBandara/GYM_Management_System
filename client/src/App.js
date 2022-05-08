@@ -13,22 +13,26 @@ import EmployeeFinantialList from "./Pages/FinantialManagement/EmployeeFinantial
 import EditEmployeeFinantialPayment from "./Pages/FinantialManagement/EditEmployeeFinantialPayment";
 import EmployeeFinantialView from "./Pages/FinantialManagement/EmployeeFinantialView";
 
+function App() {
 
-export default function App() {
+
+ 
   
   return (
-    <div>  
-          <Router>
-            <ToastContainer position="top-center" />
-            <Routes>
-              
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/Pages/Home" element={<Home />} />
-              <Route exact path="/AddEmployee" element={<AddEmployee />} />
-              <Route exact path="/Pages/EmployeeManagement/EditEmployee/:id" element={<EditEmployee />} />
-              <Route exact path="/Pages/EmployeeManagement/EmployeeList" element={<EmployeeList />} />
-              <Route exact path="/Pages/EmployeeManagement/EmployeeView/:id" element={<EmployeeView />} />
 
+
+    
+    <Router>
+      <ToastContainer position="top-center" />
+      <Routes>
+        
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/Pages/Home" element={<Home />} />
+        <Route exact path="/AddEmployee" element={<AddEmployee />} />
+        <Route exact path="/Pages/EmployeeManagement/EditEmployee/:id" element={<EditEmployee />} />
+        <Route exact path="/Pages/EmployeeManagement/EmployeeList" element={<EmployeeList />} />
+        <Route exact path="/Pages/EmployeeManagement/EmployeeView/:id" element={<EmployeeView />} />
+		
               <Route exact path="/Pages/FinantialManagement/AddEmployeeFinantialPayment" element={<AddEmployeeFinantialPayment />} />
               <Route exact path="/Pages/FinantialManagement/EmployeeFinantialList" element={<EmployeeFinantialList />} />
               <Route exact path="/Pages/FinantialManagement/EditEmployeeFinantialPayment/:id" element={<EditEmployeeFinantialPayment />} />
@@ -36,10 +40,9 @@ export default function App() {
 
 
 
-            </Routes>
-          </Router> 
-      
-      
-    </div>
-  )    
-  }
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
