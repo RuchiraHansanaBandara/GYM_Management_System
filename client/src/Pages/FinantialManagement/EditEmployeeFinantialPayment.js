@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 export default function EditEmployeeFinantialPayment() {
    
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const { empID } = useParams();
     const [user, setUser] = useState({
       empName: "",

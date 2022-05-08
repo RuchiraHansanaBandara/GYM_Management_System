@@ -13,7 +13,7 @@ export default function NavBar() {
           href="/Pages/EmployeeManagement/EmployeeList">
             Employee Management
           </a>
-
+ 
           <a
           class="nav-item nav-link active"
           href="/Pages/FinantialManagement/EmployeeFinantialList">

@@ -54,7 +54,7 @@ export default function EmployeeFinantialView() {
             <strong>Basic Salary :    </strong>
             <span>{employeeFinance.basicSal}</span>
             <br />
-            <br />
+            <br /> 
   
             <strong>OT Rate :    </strong>
             <span>{employeeFinance.otRate}</span>

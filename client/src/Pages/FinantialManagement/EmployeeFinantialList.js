@@ -65,7 +65,7 @@ function EmployeeFinantialList() {
         employee.empName.toLowerCase().match(search.toLowerCase()) ||
         employee.empID.toLowerCase().match(search.toLowerCase())
       );
-    });
+    }); 
     setFilterEmployeePayment(result);
   }, [search]);
 
