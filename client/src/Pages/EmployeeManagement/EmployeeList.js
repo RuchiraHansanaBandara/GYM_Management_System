@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function EmployeeList() {
   console.log("EMP LIST")
