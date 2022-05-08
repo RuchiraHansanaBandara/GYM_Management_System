@@ -37,7 +37,7 @@ function EditEmployee() {
       toast.success("Employee Updated Successfully");
       navigate("/Pages/EmployeeManagement/EmployeeList");
     });
-  };
+  }; 
 
   useEffect(() => {
     axios.get(`http://localhost:3001/get/${id}`).then((response) => {

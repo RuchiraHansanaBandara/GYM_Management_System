@@ -7,12 +7,12 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function EditEmployeeFinantialPayment() {
-  
+   
     const navigate = useNavigate();
     const { empID } = useParams();
     const [user, setUser] = useState({
       empName: "",
-      empMobile: "",
+      empMobile: "", 
       basicSal: "",
       otRate: "",
       otHrs: "",

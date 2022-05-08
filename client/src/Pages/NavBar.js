@@ -6,7 +6,7 @@ export default function NavBar() {
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/Pages/Home">
-        Home{" "}
+        Home{" "} 
       </a>
 
           <a class="nav-item nav-link active"

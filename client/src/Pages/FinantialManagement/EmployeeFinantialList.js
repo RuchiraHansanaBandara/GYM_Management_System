@@ -90,7 +90,7 @@ function EmployeeFinantialList() {
     }
   };
 
-  return (
+  return ( 
     <div>
 
       <NavBar/>

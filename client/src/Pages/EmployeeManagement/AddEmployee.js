@@ -11,7 +11,7 @@ function AddEmployee() {
   const [phone, setPhone] = useState("");
   const [emprole, setEmpRole] = useState("");
   const [basicsal, setBasicSal] = useState("");
-  const [otrate, setOtRate] = useState("");
+  const [otrate, setOtRate] = useState(""); 
 
   const navigate = useNavigate();
 
