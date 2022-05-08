@@ -34,7 +34,7 @@ function EditEmployee() {
       otrate: otrate,
     }).then(() => {
       console.log("success");
-      toast.success("Employee Updated Successfully");
+      toast.success("Employee Payment Updated Successfully");
       navigate("/Pages/EmployeeManagement/EmployeeList");
     });
   };

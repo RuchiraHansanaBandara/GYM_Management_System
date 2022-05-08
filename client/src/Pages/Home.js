@@ -29,6 +29,14 @@ function Home() {
             >
               Employee Management
             </a>
+
+            <a
+              class="nav-item nav-link active"
+              href="/Pages/FinantialManagement/EmployeeFinantialList"
+            >
+              Finantial Management
+            </a>
+
             <a class="nav-item nav-link active" href="#">
               Inventory Management
             </a>
