@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AddEmployeeFinantialPayment from "./Pages/FinantialManagement/AddEmployeeFinantialPayment";
 import EmployeeFinantialList from "./Pages/FinantialManagement/EmployeeFinantialList";
 import EditEmployeeFinantialPayment from "./Pages/FinantialManagement/EditEmployeeFinantialPayment";
-import EmployeeFinantialView from "./Pages/FinantialManagement/EmployeeFinantialView";
+import EmployeeFinantialView from "./Pages/FinantialManagement/EmployeeFinantialView"
 
 function App() {
 
@@ -32,12 +32,10 @@ function App() {
         <Route exact path="/Pages/EmployeeManagement/EditEmployee/:id" element={<EditEmployee />} />
         <Route exact path="/Pages/EmployeeManagement/EmployeeList" element={<EmployeeList />} />
         <Route exact path="/Pages/EmployeeManagement/EmployeeView/:id" element={<EmployeeView />} />
-		
-              <Route exact path="/Pages/FinantialManagement/AddEmployeeFinantialPayment" element={<AddEmployeeFinantialPayment />} />
-              <Route exact path="/Pages/FinantialManagement/EmployeeFinantialList" element={<EmployeeFinantialList />} />
-              <Route exact path="/Pages/FinantialManagement/EditEmployeeFinantialPayment/:id" element={<EditEmployeeFinantialPayment />} />
-              <Route exact path="/Pages/FinantialManagement/EmployeeFinantialView/:id" element={<EmployeeFinantialView />} />
-
+        <Route exact path="/Pages/FinantialManagement/AddEmployeeFinantialPayment" element={<AddEmployeeFinantialPayment />} />
+        <Route exact path="/Pages/FinantialManagement/EmployeeFinantialList" element={<EmployeeFinantialList />} />
+        <Route exact path="/Pages/FinantialManagement/EditEmployeeFinantialPayment/:id" element={<EditEmployeeFinantialPayment />} />
+        <Route exact path="/Pages/FinantialManagement/EmployeeFinantialView/:id" element={<EmployeeFinantialView />} />
 
 
       </Routes>
