@@ -13,7 +13,7 @@ export default function EditEmployeeFinantialPayment() {
     const [user, setUser] = useState({
       empName: "",
       empMobile: "", 
-      basicSal: "",
+      basicSal: "", 
       otRate: "",
       otHrs: "",
       ot: "",

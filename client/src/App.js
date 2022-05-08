@@ -7,7 +7,7 @@ import EditEmployee from "./Pages/EmployeeManagement/EditEmployee";
 import EmployeeView from "./Pages/EmployeeManagement/EmployeeView";
 import Home from "./Pages/Home";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css"; 
 import AddEmployeeFinantialPayment from "./Pages/FinantialManagement/AddEmployeeFinantialPayment";
 import EmployeeFinantialList from "./Pages/FinantialManagement/EmployeeFinantialList";
 import EditEmployeeFinantialPayment from "./Pages/FinantialManagement/EditEmployeeFinantialPayment";

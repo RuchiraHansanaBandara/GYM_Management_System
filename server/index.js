@@ -144,7 +144,7 @@ app.put("/update-employee/:id", (req, res) => {
               const { empID } = req.params;
               const sqlRemove = "DELETE FROM employees WHERE empID = ?";
               db.query(sqlRemove, empID, (error, result) => {
-                if (error) {
+                if (error) { 
                   console.log(error);
                   return res.status(400).json({ message: "Error while deleting the Employee Payment Details" });
                 }

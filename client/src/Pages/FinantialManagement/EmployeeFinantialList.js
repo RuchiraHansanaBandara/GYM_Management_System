@@ -91,6 +91,7 @@ function EmployeeFinantialList() {
   };
 
   return ( 
+
     <div>
 
       <NavBar/>
