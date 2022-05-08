@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./CustomerView.css";
 
+//customer view
 const CustomerView = () => {
   const [customer, setCustomer] = useState({});
   const { id } = useParams();

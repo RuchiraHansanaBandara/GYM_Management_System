@@ -6,6 +6,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
+//update cus details
 function EditCustomer() {
   const navigate = useNavigate();
   const { id } = useParams();

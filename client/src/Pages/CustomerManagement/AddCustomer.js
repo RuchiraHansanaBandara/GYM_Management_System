@@ -16,7 +16,7 @@ function AddCustomer() {
   //const genderList =  ["Male","Female"];
 
   const navigate = useNavigate();
-
+  //custmer details
   const addCustomer = (e) => {
     e.preventDefault();
     if (

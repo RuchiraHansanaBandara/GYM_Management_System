@@ -76,7 +76,7 @@ function CustomerList() {
                        CustomerList[i].paymentMethod,
                        CustomerList[i].paymentAmount,                      ]);
     }//save json data to bodydata in order to print in the pdf table
-
+    //pdf genarate
     const doc = new jsPDF({orientation:"portrait"});
     var time = new Date().toLocaleString();
     doc.setFontSize(20);

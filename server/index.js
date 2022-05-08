@@ -75,7 +75,7 @@ app.delete("/remove/:id", (req, res) => {
   });
 });*/
 
-//Delet
+//Delete
 //Update Employee --------------------------------------------------------------------------------------------------------
 
 app.get("/get/:id", (req, res) => {
@@ -136,7 +136,7 @@ app.post("/createcustomer", (req, res) => {
   );
 });
 
-//Customer List -----------------------------------------------------------------------------------------------------------
+//Customer List get -----------------------------------------------------------------------------------------------------------
 app.get("/CustomerList", (req, res) => {
   const sqlSelect = "SELECT * FROM customer";
   db.query(sqlSelect, (err, result) => {
