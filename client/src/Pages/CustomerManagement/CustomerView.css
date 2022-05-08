@@ -30,3 +30,14 @@
     margin-left: 2%;
    
 }
+.th {
+    background-color: blue;
+    color: navy;
+} 
+.table table-primary table-sm{
+    align-items: right;
+}
+
+
+
+

@@ -178,7 +178,7 @@ app.delete("/removecustomer/:id", (req, res) => {
 
 app.get("/getcustomer/:id", (req, res) => {
   const { id } = req.params;
-  const sqlget = "SELECT * FROM Customer WHERE id = ?";
+  const sqlget = "SELECT * FROM customer WHERE id = ?";
   db.query(sqlget, id, (error, result) => {
     if (error) {
       console.log(error);
@@ -186,6 +186,7 @@ app.get("/getcustomer/:id", (req, res) => {
     res.send(result);
   });
 });
+
 
 app.put("/updatecustomer/:id", (req, res) => {
   const { id } = req.params;

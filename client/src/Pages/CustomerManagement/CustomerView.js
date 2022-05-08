@@ -75,7 +75,7 @@ const CustomerView = () => {
           <br />
           <br />
           <Link to="/Pages/CustomerManagement/CustomerList">
-            <div className="btn btn-outline-info">Go Back</div>
+            <div className="btn btn-info">Go Back</div>
           </Link>
         </div>
       </div>

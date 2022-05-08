@@ -13,7 +13,7 @@ function AddCustomer() {
   const [contact, setContact] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [paymentAmount, setPaymentAmount] = useState("");
-
+  //const genderList =  ["Male","Female"];
 
   const navigate = useNavigate();
 
@@ -102,6 +102,7 @@ function AddCustomer() {
                 }}
               />
             </div>
+
             <div className="form-group m-2">
               <input type="text"
                 className="form-control form-control-lg"
@@ -113,6 +114,8 @@ function AddCustomer() {
                 }}
               />
             </div>
+            
+            
             <div className="form-group m-2">
               <input
                 type="text"
@@ -156,6 +159,7 @@ function AddCustomer() {
                 type="text"
                 className="form-control form-control-lg"
                 placeholder="Enter Customer Telephone Number (+94)"
+                pattern="[0-9]{10}"
                 name="Contact"
                 value={contact}
                 onChange={(event) => {
@@ -168,7 +172,7 @@ function AddCustomer() {
               <input
                 type="select"
                 className="form-control form-control-lg"
-                placeholder="Select payment method"
+                placeholder="Add payment method"
                 name="paymentMethod"
                 value={paymentMethod}
                 onChange={(event) => {
@@ -189,12 +193,12 @@ function AddCustomer() {
               />
             </div>
             <div class="AddEButton" >
-              <button color="blue" className="btn btn-outline-info m-3">
+              <button color="blue" className="btn btn-primary">
                 {" "}
                 Add Customer{" "}
               </button>
               <Link
-                className="btn btn-outline-danger"
+                className="btn btn-secondary"
                 to="/Pages/CustomerManagement/CustomerList"
               >
                 Cancel
@@ -208,3 +212,12 @@ function AddCustomer() {
 }
 
 export default AddCustomer;
+// {/*  */}
+// <label for="genre">Select Gender</label>
+//              <select className="form-control">
+             
+//               {genderList.map(gen=>(
+                
+//                 <option value={gender} onClick={() => setGender(gen)}>{gen}</option>
+//               ))}
+//              </select>

@@ -123,7 +123,7 @@ function EditCustomer() {
                 className="form-control form-control-lg"
                 placeholder="Enter Custmer UserName"
                 name="userName"
-                value={email || ""}
+                value={userName || ""}
                 onChange={onChange}
               />
             </div>
@@ -133,7 +133,7 @@ function EditCustomer() {
                 className="form-control form-control-lg"
                 placeholder="Enter Customer email"
                 name="email"
-                value={userName || ""}
+                value={email || ""}
                 onChange={onChange}
               />
             </div>
@@ -152,6 +152,7 @@ function EditCustomer() {
                 type="Number"
                 className="form-control form-control-lg"
                 placeholder="Enter Customer contact Number"
+                pattern="[0-9]{10}"
                 name="contact"
                 value={contact || ""}
                 onChange={onChange}
@@ -159,7 +160,7 @@ function EditCustomer() {
             </div>
             <div className="form-group m-2">
               <input
-                type="number"
+                type="Text"
                 className="form-control form-control-lg"
                 placeholder="Enter Customer Payment Method"
                 name="paymentMethod"
@@ -169,7 +170,7 @@ function EditCustomer() {
             </div>
             <div className="form-group m-2">
               <input
-                type="number"
+                type="Text"
                 className="form-control form-control-lg"
                 placeholder="Enter Customer Payment Amount"
                 name="paymentAmount"
@@ -178,7 +179,7 @@ function EditCustomer() {
               />
             </div>
             <div class="AddEButton">
-              <button className="btn btn-outline-info m-3">
+              <button className="btn btn-primary">
                 {" "}
                 Update Customer{" "}
               </button>
