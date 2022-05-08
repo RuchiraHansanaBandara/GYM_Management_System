@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./EmployeeFinantialView.css";
-import NavBar from "../NavBar";
+
 
 export default function EmployeeFinantialView() {
     const [employeeFinance, setEmployeeFinance] = useState({});

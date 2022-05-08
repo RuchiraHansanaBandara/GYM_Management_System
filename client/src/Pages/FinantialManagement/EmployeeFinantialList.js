@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import NavBar from "../NavBar";
+
 
 function EmployeeFinantialList() {
 
@@ -110,7 +110,7 @@ function EmployeeFinantialList() {
           <span class="navbar-toggler-icon"></span>
         </button>
         
-        {/* <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/Pages/Home">
               Home{" "}
@@ -131,7 +131,7 @@ function EmployeeFinantialList() {
               Inventory Management
             </a>
           </div>
-        </div> */}
+        </div>
       </nav>
 
 

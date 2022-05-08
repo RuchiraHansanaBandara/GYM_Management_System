@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import NavBar from "../NavBar";
 
 export default function EditEmployeeFinantialPayment() {
   
@@ -65,7 +64,7 @@ export default function EditEmployeeFinantialPayment() {
     return (
       <div>
 
-        <NavBar/>
+        
         <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
           <a class="navbar-brand" href="/Pages/Home">
             MultiFit GYM
@@ -82,7 +81,7 @@ export default function EditEmployeeFinantialPayment() {
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          {/* <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-item nav-link active" href="/Pages/Home">
                 Home{" "}
@@ -97,7 +96,7 @@ export default function EditEmployeeFinantialPayment() {
                 Inventory Management
               </a>
             </div>
-          </div> */}
+          </div>
         </nav>
   
         <div className="container-fluid">

@@ -5,25 +5,19 @@ import AddEmployee from "./Pages/EmployeeManagement/AddEmployee";
 import EmployeeList from "./Pages/EmployeeManagement/EmployeeList";
 import EditEmployee from "./Pages/EmployeeManagement/EditEmployee";
 import EmployeeView from "./Pages/EmployeeManagement/EmployeeView";
-
+import Home from "./Pages/Home";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AddEmployeeFinantialPayment from "./Pages/FinantialManagement/AddEmployeeFinantialPayment";
 import EmployeeFinantialList from "./Pages/FinantialManagement/EmployeeFinantialList";
 import EditEmployeeFinantialPayment from "./Pages/FinantialManagement/EditEmployeeFinantialPayment";
 import EmployeeFinantialView from "./Pages/FinantialManagement/EmployeeFinantialView";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Home from "./Pages/Home";
-import NavBar from "./Pages/NavBar";
+
 
 export default function App() {
   
   return (
-
-
-    <div>
-
-          <NavBar/>
-            
+    <div>  
           <Router>
             <ToastContainer position="top-center" />
             <Routes>
